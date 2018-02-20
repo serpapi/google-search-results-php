@@ -40,7 +40,8 @@ class GoogleSearchResults {
    
     $api = new RestClient([
         'base_url' => "https://serpapi.com", 
-        'format' => $decode_format
+        'format' => $decode_format,
+        'user_agent' => 'google-search-results/0.0.1'
     ]);
     $default_q = [
       'format' => $format,
@@ -57,14 +58,9 @@ class GoogleSearchResults {
     elseif($result->info->http_code == 400 && $format == 'json')
     {
       $error = $result->decode_response();
-      var_dump($error);
-      
-      foreach($result as $key => $value)
-        var_dump($value);
-
-      throw new GoogSearchResultsException($error['error']);
+      $msg = $error->{'error'};
+      throw new GoogSearchResultsException($msg);
     }
-    // 
     throw new GoogSearchResultsException("Unexpected query failure: ", $result);
   }
   

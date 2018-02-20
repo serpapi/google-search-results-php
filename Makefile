@@ -1,4 +1,4 @@
-all: test
+all: lint test
 
 test:
 	php composer.phar run-script test
