@@ -1,0 +1,37 @@
+{
+    "name": "SerpAPI/google-search-results-php", 
+    "version": "0.0.1", 
+    "description": "Google search result via Serp API", 
+    "type": "library", 
+    "keywords": ["Google","Serp","Search", "Result", "Localisation","REST", "api", "client", "curl", "JSON", "XML"], 
+    "homepage": "http://github.com/serpapi/google-search-results-php", 
+    "license": "MIT", 
+    "authors": [
+        {
+            "name": "Victor Benarbia", 
+            "role": "Developer", 
+            "email": "victor@serpapi.com"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/serpapi/google-search-results-php/issues"
+    }, 
+    "require": {
+        "php": ">=5.4.0", 
+        "ext-curl": "*", 
+        "ext-json": "*"
+    }, 
+    "require-dev": {
+        "php": ">=5.5.7", 
+        "phpunit/phpunit": "^7.0"
+    }, 
+    "autoload": {
+        "files": [
+          "restclient.php", 
+          "google-search-results.php"
+          ]
+    },
+    "scripts": {
+        "test": "phpunit test.php"
+    }
+}
