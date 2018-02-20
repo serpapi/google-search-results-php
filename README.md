@@ -5,14 +5,14 @@ This Php API is meant to scrape and parse Google results using [SERP API](https:
 
 ## Installation
 
-Assuming Php 7+ is already installed:
+Assuming Php 7+ is already installed and [composer](https://getcomposer.org/) dependency managemen tool.
 
 ## Simple Example
 
 ```php
 require 'path/to/google_search_results'
-query = new GoogleSearchResults("demo")
-hash = query.json(["q" => "coffee"])
+$serp = new GoogleSearchResults("demo");
+$result = $serp(["q" => "coffee"]);
  ```
 
 ## Set SERP API key
@@ -23,11 +23,11 @@ $serp.set_serp_api_key("Your Private Key")
 ```
 Or
 ```php
-query = new GoogleSearch() q: "coffee", serp_api_key: "Your Private Key"
+$serp = new GoogleSearchResults("Your Private Key") 
 ```
 ## Example with all params and all outputs
-```ruby
-query_params = [
+```php
+$query = [
   "q" =>  "query",
   "google_domain" =>  "Google Domain", 
   "location" =>  "Location Requested", 
@@ -38,13 +38,13 @@ query_params = [
   "num" =>  "Number of Results",
   "start" =>  "Pagination Offset",
   "serp_api_key" =>  "Your SERP API Key"
-]
+];
 
-$serp = new GoogleSearchResults("private key")
+$serp = new GoogleSearchResults("private key");
 
-html_results = $serp.html
-json_results = $serp.json
-json_results_with_images = $serp.json_with_images
+$html_results = $serp.html($query);
+$json_results = $serp.json($query);
+$json_results_with_images = $serp.json_with_images($query);
 ```
 
 Author: Victor Benarbia
@@ -52,3 +52,4 @@ For more information: see https://serpapi.com
 
 Thanks Rest API for Php
  - Travis Dent  - https://github.com/tcdent/php-restclient
+ - Test framework - PhpUnit - https://phpunit.de/getting-started/phpunit-7.html
