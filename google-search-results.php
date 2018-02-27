@@ -34,7 +34,7 @@ class GoogleSearchResults {
     return search('php', 'html', $q);
   }
     
-  function search($decode_format, $format, $q) {
+  function search($decode_format, $output, $q) {
     if($this->serp_api_key == NULL)
       throw new GoogSearchResultsException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
    
@@ -44,7 +44,7 @@ class GoogleSearchResults {
         'user_agent' => 'google-search-results/0.0.1'
     ]);
     $default_q = [
-      'format' => $format,
+      'output' => $output,
       'source' => 'php',
       'serp_api_key' => $this->serp_api_key
     ];
@@ -55,13 +55,17 @@ class GoogleSearchResults {
     {
       return $result->decode_response();
     }    
-    elseif($result->info->http_code == 400 && $format == 'json')
+    
+    if($result->info->http_code == 400 && $output == 'json')
     {
       $error = $result->decode_response();
-      $msg = $error->{'error'};
+      $msg = $error->error;
       throw new GoogSearchResultsException($msg);
+      return;
     }
-    throw new GoogSearchResultsException("Unexpected query failure: ", $result);
+    
+    throw new GoogSearchResultsException("Unexpected query failure: $result");
+    return;
   }
   
 }

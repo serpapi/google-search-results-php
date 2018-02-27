@@ -11,11 +11,10 @@ class GoogleSearchResultsTest extends TestCase {
     ];
   }
   
-  public function test_search() {
-    $serp = new GoogleSearchResults('demo');
-    $rsp = $serp->search('json', 'json', $this->QUERY);
-    $this->assertEquals(get_class($rsp), "stdClass");
-    $this->assertEquals($rsp, "");
+  public function test_simple_search() {
+    $serp = new GoogleSearchResults("demo");
+    $rsp = $serp->search("json", "json", $this->QUERY);
+    $this->assertEquals($rsp->local_results[0]->title, "Stumptown Coffee Roasters");
   }
   
   /**
@@ -24,7 +23,8 @@ class GoogleSearchResultsTest extends TestCase {
   */
   public function test_bad_key() {      
     $serp = new GoogleSearchResults('badkey');
-    $serp->search('json', 'json', $this->QUERY);
+    $q  = ['q' => "undefined", 'location' => "Austin"];
+    $serp->search('json', 'json', $q);
   }
  
 }
