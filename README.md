@@ -12,7 +12,7 @@ Assuming Php 7+ is already installed and [composer](https://getcomposer.org/) de
 ```php
 require 'path/to/google_search_results'
 $serp = new GoogleSearchResults("demo");
-$result = $serp(["q" => "coffee"]);
+$result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
  ```
 
 ## Set SERP API key
