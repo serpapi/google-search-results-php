@@ -1,9 +1,7 @@
 language: php
 php:
   - '7.1'
-
 install:
-	make install
-
+ - make install
 script:
-	make test
+ - make test
