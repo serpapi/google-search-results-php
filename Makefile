@@ -19,4 +19,4 @@ install_composer:
 	curl -sS https://getcomposer.org/installer | php
 
 install_dep:
-	php composer.phar install -dev
+	php ./composer.phar install
