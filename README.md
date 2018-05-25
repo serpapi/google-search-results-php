@@ -1,7 +1,7 @@
 # Google Search Results in PHP
 
 
-This Php API is meant to scrape and parse Google results using [SERP API](https://serpapi.com). Feel free to fork this repository to add more backends.
+This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com). Feel free to fork this repository to add more backends.
 
 ## Installation
 
