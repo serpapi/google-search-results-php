@@ -19,7 +19,7 @@ $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
 
 ```php
 $serp = GoogleSearchResults()
-$serp.set_serp_api_key("Your Private Key")
+$serp->set_serp_api_key("Your Private Key")
 ```
 Or
 ```php
@@ -42,9 +42,9 @@ $query = [
 
 $serp = new GoogleSearchResults("private key");
 
-$html_results = $serp.html($query);
-$json_results = $serp.json($query);
-$json_results_with_images = $serp.json_with_images($query);
+$html_results = $serp->html($query);
+$json_results = $serp->json($query);
+$json_results_with_images = $serp->json_with_images($query);
 ```
 
 Author: Victor Benarbia
