@@ -5,7 +5,7 @@ This Php API is meant to scrape and parse Google results using [SerpApi](https:/
 
 ## Installation
 
-Assuming Php 7+ is already installed and [composer](https://getcomposer.org/) dependency managemen tool.
+Assuming Php 7+ is already installed and [composer](https://getcomposer.org/) dependency management tool.
 
 ## Simple Example
 
