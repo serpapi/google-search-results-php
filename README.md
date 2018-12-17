@@ -1,6 +1,6 @@
-# Google Search Results in Ruby
+# Google Search Results in PHP
 
-This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com). 
+This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
 Feel free to fork this repository to add more backends.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
