@@ -26,18 +26,16 @@ class GoogleSearchResults {
     return search('json', 'json', $q);
   }
 
-  public function jsonWithImage($q) {
-    return search('json', 'json_with_images', $q);
-  }
-  
   public function html($q) {
     return search('php', 'html', $q);
   }
     
   function search($decode_format, $output, $q) {
-    if($this->serp_api_key == NULL)
+    if($this->serp_api_key == NULL) 
+    {
       throw new GoogSearchResultsException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
-   
+    }
+    
     $api = new RestClient([
         'base_url' => "https://serpapi.com", 
         'format' => $decode_format,
@@ -50,6 +48,7 @@ class GoogleSearchResults {
     ];
     $q = array_merge($default_q, $q);
     $result = $api->get("search", $q);
+
     // GET https://serpapi.com/search?q=Coffee&location=Portland&format=json&source=php&serp_api_key=demo
     if($result->info->http_code == 200)
     {
