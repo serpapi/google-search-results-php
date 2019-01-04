@@ -1,6 +1,10 @@
+
 # Google Search Results in PHP
 
+[![Build Status](https://travis-ci.org/serpapi/google-search-results-php.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-php)
+
 This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
+
 Feel free to fork this repository to add more backends.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
