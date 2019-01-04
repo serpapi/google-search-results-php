@@ -21,7 +21,7 @@ $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
 
 ```php
 $serp = GoogleSearchResults()
-$serp.->set_serp_api_key("Your Private Key")
+$serp->set_serp_api_key("Your Private Key")
 ```
 Or
 
