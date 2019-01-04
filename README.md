@@ -1,11 +1,13 @@
 # Google Search Results in PHP
 
+This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
+Feel free to fork this repository to add more backends.
 
-This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com). Feel free to fork this repository to add more backends.
+[The full documentation is available here.](https://serpapi.com/search-api)
 
 ## Installation
 
-Assuming Php 7+ is already installed and [composer](https://getcomposer.org/) dependency managemen tool.
+ Php 7+ must be already installed and [composer](https://getcomposer.org/) dependency managemen tool.
 
 ## Simple Example
 
@@ -15,17 +17,19 @@ $serp = new GoogleSearchResults("demo");
 $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
  ```
 
-## Set SERP API key
+## Set SerpApi key
 
 ```php
 $serp = GoogleSearchResults()
 $serp->set_serp_api_key("Your Private Key")
 ```
 Or
+
 ```php
 $serp = new GoogleSearchResults("Your Private Key") 
 ```
-## Example with all params and all outputs
+
+## Example with all parameters and all outputs
 ```php
 $query = [
   "q" =>  "query",
@@ -44,11 +48,21 @@ $serp = new GoogleSearchResults("private key");
 
 $html_results = $serp->html($query);
 $json_results = $serp->json($query);
-$json_results_with_images = $serp->json_with_images($query);
 ```
 
-Author: Victor Benarbia
-For more information: see https://serpapi.com
+This service supports Google Images, News, Shopping.
+To enable a type of search, the field tbm (to be matched) must be set to:
+
+ * isch: Google Images API.
+ * nws: Google News API.
+ * shop: Google Shopping API.
+ * any other Google service should work out of the box.
+ * (no tbm parameter): regular Google Search.
+
+[The full documentation is available here.](https://serpapi.com/search-api)
+
+Author: Victor Benarbia victor@serpapi.com
+For more information: https://serpapi.com
 
 Thanks Rest API for Php
  - Travis Dent  - https://github.com/tcdent/php-restclient

@@ -1,6 +1,6 @@
 {
     "name": "SerpAPI/google-search-results-php", 
-    "version": "0.0.1", 
+    "version": "0.1.0", 
     "description": "Google search result via Serp API", 
     "type": "library", 
     "keywords": ["Google","Serp","Search", "Result", "Localisation","REST", "api", "client", "curl", "JSON", "XML"], 
