@@ -16,7 +16,7 @@ Feel free to fork this repository to add more backends.
 ## Simple Example
 
 ```php
-require 'path/to/google_search_results'
+require 'path/to/google_search_results';
 $serp = new GoogleSearchResults("demo");
 $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
  ```
@@ -24,13 +24,13 @@ $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
 ## Set SerpApi key
 
 ```php
-$serp = GoogleSearchResults()
-$serp->set_serp_api_key("Your Private Key")
+$serp = new GoogleSearchResults();
+$serp->set_serp_api_key("Your Private Key");
 ```
 Or
 
 ```php
-$serp = new GoogleSearchResults("Your Private Key") 
+$serp = new GoogleSearchResults("Your Private Key");
 ```
 
 ## Example with all parameters and all outputs
@@ -39,7 +39,7 @@ $query = [
   "q" =>  "query",
   "google_domain" =>  "Google Domain", 
   "location" =>  "Location Requested", 
-  "device" =>  device,
+  "device" =>  "device",
   "hl" =>  "Google UI Language",
   "gl" =>  "Google Country",
   "safe" =>  "Safe Search Flag",
