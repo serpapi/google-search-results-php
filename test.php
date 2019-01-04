@@ -11,11 +11,23 @@ class GoogleSearchResultsTest extends TestCase {
     ];
   }
   
-  public function test_simple_search() {
+  public function test_search_method() {
     $serp = new GoogleSearchResults("demo");
-    $rsp = $serp->search("json", "json", $this->QUERY);
-    $this->assertGreaterThan(5, strlen($rsp->local_results[0]->title));
+    $response = $serp->search("json", "json", $this->QUERY);
+    $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
   }
 
+  public function test_json_method() {
+    $serp = new GoogleSearchResults("demo");
+    $response = $serp->json($this->QUERY);
+    $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
+  }
+
+  public function test_html_method() {
+    $serp = new GoogleSearchResults("demo");
+    $response = $serp->html($this->QUERY);
+    $this->assertGreaterThan(10000, strlen($response));
+  }
 }
+
 ?>

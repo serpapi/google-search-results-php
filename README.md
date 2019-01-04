@@ -21,7 +21,7 @@ $result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
 
 ```php
 $serp = GoogleSearchResults()
-$serp.set_serp_api_key("Your Private Key")
+$serp.->set_serp_api_key("Your Private Key")
 ```
 Or
 
@@ -46,8 +46,8 @@ $query = [
 
 $serp = new GoogleSearchResults("private key");
 
-$html_results = $serp.html($query);
-$json_results = $serp.json($query);
+$html_results = $serp->html($query);
+$json_results = $serp->json($query);
 ```
 
 This service supports Google Images, News, Shopping.
