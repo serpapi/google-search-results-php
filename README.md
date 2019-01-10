@@ -11,7 +11,7 @@ Feel free to fork this repository to add more backends.
 
 ## Installation
 
- Php 7+ must be already installed and [composer](https://getcomposer.org/) dependency managemen tool.
+ Php 7+ must be already installed and [composer](https://getcomposer.org/) dependency management tool.
 
 ## Simple Example
 
