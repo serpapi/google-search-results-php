@@ -36,16 +36,16 @@ class GoogleSearchResultsTest extends TestCase {
   }
 
   public function test_get_account_method() {
+    // skip if no account provided
+    if($this->API_KEY == "demo") {
+      return;
+    }
     $client = new GoogleSearchResults($this->API_KEY);
     $info = $client->get_account();
     $this->assertEquals($this->API_KEY , $info->api_key);
   }
 
   public function test_get_location_method() {
-    // skip if no account provided
-    if($this->API_KEY == "demo") {
-      return;
-    }
     $client = new GoogleSearchResults($this->API_KEY);
     $location_list = $client->get_location('Austin', 3);
     $this->assertEquals(200635, $location_list[0]->google_id);
