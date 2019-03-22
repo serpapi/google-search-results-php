@@ -1,7 +1,10 @@
-all: lint test
+all: lint test example
 
 test:
 	php composer.phar run-script test
+
+example:
+	php composer.phar run-script test_example
 
 # Lint PHP files
 lint:
