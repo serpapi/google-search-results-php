@@ -18,18 +18,27 @@ class GoogleSearchResultsTest extends TestCase {
   }
   
   public function test_get_search_method() {
+    if(!isset($_ENV["API_KEY"])){
+      return;
+    }
     $client = new GoogleSearchResults($this->API_KEY);
     $response = $client->search("json", $this->QUERY);
     $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
   }
 
   public function test_get_json_method() {
+    if(!isset($_ENV["API_KEY"])){
+      return;
+    }
     $client = new GoogleSearchResults($this->API_KEY);
     $response = $client->get_json($this->QUERY);
     $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
   }
 
   public function test_get_html_method() {
+    if(!isset($_ENV["API_KEY"])){
+      return;
+    }
     $client = new GoogleSearchResults($this->API_KEY);
     $response = $client->get_html($this->QUERY);
     $this->assertGreaterThan(10000, strlen($response));
@@ -52,8 +61,7 @@ class GoogleSearchResultsTest extends TestCase {
   }
 
   public function test_get_search_archive_method() {
-    // skip if no account provided
-    if($this->API_KEY == "demo") {
+    if(!isset($_ENV["API_KEY"])){
       return;
     }
     $client = new GoogleSearchResults($this->API_KEY);
