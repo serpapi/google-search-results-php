@@ -25,10 +25,10 @@ Serp API provides a [script builder](https://serpapi.com/demo) to get you starte
 
 ## Quick start
 
-if you're using composer, you can add this package
- ```bash
- $ composer require serpapi/google-search-results-php
- ```
+if you're using composer, you can add this package [link to packagist](https://packagist.org/packages/serpapi/google-search-results-php).
+```bash
+$ composer require serpapi/google-search-results-php
+```
 
 if not, you must clone this repository and link the class.
 ```php
