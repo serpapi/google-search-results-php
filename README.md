@@ -37,8 +37,8 @@ require 'path/to/google_search_results';
 
 Then you can start coding something like:
 ```php
-$serp = new GoogleSearchResults("demo");
-$result = $serp(["q" => "coffee","location"=>"Austin,Texas"]);
+$client = new GoogleSearchResults("demo");
+$result = $client(["q" => "coffee","location"=>"Austin,Texas"]);
  ```
 
 This example runs a search about "coffee" using your secret api key.
@@ -56,23 +56,23 @@ Et voila..
 ## Example
  * [How to set SERP API key](#how-to-set-serp-api-key)
  * [Search API capability](#search-api-capability)
- * [Example by specification](#example-by-specification)
  * [Location API](#location-api)
  * [Search Archive API](#search-archive-api)
  * [Account API](#account-api)
  * [Search Google Images](#search-google-images)
+ * [Example by specification](#example-by-specification)
 
 ### How to set SERP API key
 The Serp API key can be set globally using a singleton pattern.
 
 ```php
-$serp = new GoogleSearchResults();
-$serp->set_serp_api_key("Your Private Key");
+$client = new GoogleSearchResults();
+$client->set_serp_api_key("Your Private Key");
 ```
 Or
 
 ```php
-$serp = new GoogleSearchResults("Your Private Key");
+$client = new GoogleSearchResults("Your Private Key");
 ```
 
 ### Search API capability
@@ -93,10 +93,10 @@ $query = [
   "async" => true|false # allow async 
 ];
 
-$serp = new GoogleSearchResults("private key");
+$client = new GoogleSearchResults("private key");
 
-$html_results = $serp->get_html($query);
-$json_results = $serp->get_json($query);
+$html_results = $client->get_html($query);
+$json_results = $client->get_json($query);
 ```
 
 ### Location API
@@ -166,7 +166,7 @@ foreach($data->images_results as $image_result) {
 this code prints all the images links, 
  and download image if you un-comment the line with wget (linux/osx tool to download image).
 
-## Run test
+## Example by specification
 
 The code described above is tested in the file test.php and example.php.
 To run the test locally. 
