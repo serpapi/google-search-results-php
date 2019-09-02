@@ -4,7 +4,7 @@ test:
 	php composer.phar run-script test
 
 release: 
-	@echo "provide release instruction"
+	@echo "automatic just check: https://packagist.org/packages/serpapi/google-search-results-php"
 
 example:
 	php composer.phar run-script test_example
