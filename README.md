@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-php.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-php)
 
-This Php API is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
+This Php API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
 Feel free to fork this repository to add more backends.
 
@@ -47,11 +47,18 @@ The Serp API service (backend)
  - searches on Google using the query: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
-The Ruby class GoogleSearchResults
+The Php class GoogleSearchResults
  - Format the request to Serp API server
  - Execute GET http request
  - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
 Et voila..
+
+Alternatively, you can search:
+ - Bing using BingSearchResults class
+ - Baidu using BaiduSearchResults class
+
+See the playground to generate your code.
+ https://serpapi.com/playground
 
 ## Example
  * [How to set SERP API key](#how-to-set-serp-api-key)
