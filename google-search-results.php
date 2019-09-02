@@ -122,7 +122,7 @@ class SerpApiClient {
     
     $api = new RestClient([
         'base_url' => "https://serpapi.com",
-        'user_agent' => 'google-search-results-php/1.2.0'
+        'user_agent' => 'google-search-results-php/1.3.0'
     ]);
 
     $default_q = [
