@@ -1,28 +1,71 @@
-<?php
+<?php 
 
 // Exception
-class GoogSearchResultsException extends Exception {}
+class SerpApiClientException extends Exception {}
+
+/***
+ * Google search results client
+ */
+class GoogleSearchResults extends SerpApiClient {
+  public function __construct($api_key) {
+    parent::__construct($api_key, 'google');
+  }
+}
+
+/***
+ * Bing search results client
+ */
+class BingSearchResults extends SerpApiClient {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'bing');
+  }
+}
+
+/***
+ * Baidu search results client
+ */
+class BaiduSearchResults extends SerpApiClient {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'baidu');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiClientException("location is not currently supported by Bing");
+  }
+}
 
 /***
  * Wrapper around SerpAPI.com
  */
-class GoogleSearchResults {
+class SerpApiClient {
   public $options;
   public $api;
-  public $serp_api_key;
-  
-  public function __construct($serp_api_key=NULL) {
-    if($serp_api_key)
-      $this->serp_api_key = $serp_api_key;
+  public $api_key;
+  public $engine;
+
+  public function __construct($api_key = NULL, $engine = 'google') {
+    // register engine
+    if($engine) {
+      $this->engine = $engine;
+    } else {
+      throw new SerpApiClientException("engine must be defined");
+    }
+
+    // register private api key
+    if($api_key) {
+      $this->api_key = $api_key;
+    }
   }
   
-  public function set_serp_api_key($serp_api_key) {
-    if($serp_api_key == NULL)
-      throw new GoogSearchResultsException("serp_api_key must have a value");
-    $this->serp_api_key = $serp_api_key;
+  public function set_serp_api_key($api_key) {
+    if($api_key == NULL)
+      throw new SerpApiClientException("serp_api_key must have a value");
+    $this->api_key = $api_key;
   }
-  
-  /***
+    /***
    * get_json 
    * @return [Hash] search result "json like"
    */
@@ -63,6 +106,9 @@ class GoogleSearchResults {
     return $this->query('/account', 'json', []);
   }
 
+  /**
+   * Run a search
+   */
   function search($output, $q) {
     return $this->query('/search', $output, $q);
   }
@@ -70,8 +116,8 @@ class GoogleSearchResults {
   function query($path, $output, $q) {
     $decode_format = $output == 'json' ? 'json' : 'php';
 
-    if($this->serp_api_key == NULL) {
-      throw new GoogSearchResultsException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
+    if($this->api_key == NULL) {
+      throw new SerpApiClientException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
     }
     
     $api = new RestClient([
@@ -80,14 +126,15 @@ class GoogleSearchResults {
     ]);
 
     $default_q = [
-      'output' => $output,
-      'source' => 'php',
-      'serp_api_key' => $this->serp_api_key
+      'output'  => $output,
+      'source'  => 'php',
+      'api_key' => $this->api_key,
+      'engine'  => $this->engine
     ];
     $q = array_merge($default_q, $q);
     $result = $api->get($path, $q);
 
-    // GET https://serpapi.com/search?q=Coffee&location=Portland&format=json&source=php&serp_api_key=demo
+    // GET https://serpapi.com/search?q=Coffee&location=Portland&format=json&source=php&engine=google&serp_api_key=demo
     if($result->info->http_code == 200)
     {
       // html response
@@ -102,10 +149,10 @@ class GoogleSearchResults {
     {
       $error = $result->decode_response();
       $msg = $error->error;
-      throw new GoogSearchResultsException($msg);
+      throw new SerpApiClientException($msg);
     }
     
-    throw new GoogSearchResultsException("Unexpected exception: $result->response");
+    throw new SerpApiClientException("Unexpected exception: $result->response");
   }
   
 }

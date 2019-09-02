@@ -3,6 +3,9 @@ all: lint test example
 test:
 	php composer.phar run-script test
 
+release: 
+	@echo "provide release instruction"
+
 example:
 	php composer.phar run-script test_example
 
