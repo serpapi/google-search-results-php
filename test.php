@@ -17,7 +17,6 @@ class GoogleSearchResultsTest extends TestCase {
     }
   }
   
-
   public function test_google_get_json_method() {
     if(!isset($_ENV["API_KEY"])){
       return;
@@ -27,6 +26,7 @@ class GoogleSearchResultsTest extends TestCase {
     $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
     $this->assertGreaterThan(5, count($response->organic_results));
   }
+
 
   public function test_google_get_html_method() {
     if(!isset($_ENV["API_KEY"])){

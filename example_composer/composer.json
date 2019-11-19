@@ -1,0 +1,5 @@
+{
+  "require": {
+    "serpapi/google-search-results-php": "^1.2"
+  }
+}

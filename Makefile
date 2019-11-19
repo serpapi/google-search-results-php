@@ -1,3 +1,6 @@
+url=https://github.com/serpapi/google-search-results-php.git
+# https://packagist.org/packages/serpapi/google-search-results-php
+
 all: lint test example
 
 test:
@@ -5,6 +8,8 @@ test:
 
 release: 
 	@echo "automatic just check: https://packagist.org/packages/serpapi/google-search-results-php"
+	curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=serpapi&apiToken=WndLqYErok6VjThQ0XDt' \
+	 -d'{"repository":{"url":"$(url)"}}'
 
 example:
 	php composer.phar run-script test_example

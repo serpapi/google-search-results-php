@@ -30,15 +30,27 @@ if you're using composer, you can add this package ([link to packagist](https://
 $ composer require serpapi/google-search-results-php
 ```
 
+Then you need to load the dependency in your script.
+```
+<?php
+require __DIR__ . '/vendor/autoload.php';
+ ?>
+```
+
 if not, you must clone this repository and link the class.
 ```php
-require 'path/to/google_search_results';
+require 'path/to/google-search-results';
+require 'path/to/restclient';
 ```
+
+Get "your secret key" from https://serpapi.com/dashboard
 
 Then you can start coding something like:
 ```php
-$client = new GoogleSearchResults("demo");
-$result = $client(["q" => "coffee","location"=>"Austin,Texas"]);
+$client = new GoogleSearchResults("your secret key");
+$query = ["q" => "coffee","location"=>"Austin,Texas"];
+$response = $client->get_json($query);
+print_r($json_results)
  ```
 
 This example runs a search about "coffee" using your secret api key.
@@ -68,6 +80,7 @@ See the playground to generate your code.
  * [Account API](#account-api)
  * [Search Google Images](#search-google-images)
  * [Example by specification](#example-by-specification)
+ * [Composer example](#composer-example)
 
 ### How to set SERP API key
 The Serp API key can be set globally using a singleton pattern.
@@ -182,6 +195,15 @@ To run the test locally.
 export API_KEY='your secret key'
 make test example
 ```
+
+## Composer example
+
+see: https://github.com/serpapi/google-search-results-php/example_composer/
+
+To run the code.
+ - git clone https://github.com/serpapi/google-search-results-php
+ - cd google-search-results-php/example_composer/
+ - make API_KEY=<yourSecretKey> all
 
 ## Conclusion
 
