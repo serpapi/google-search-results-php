@@ -38,7 +38,54 @@ class BaiduSearchResults extends SerpApiClient {
 }
 
 /***
- * Wrapper around SerpAPI.com
+ * Yahoo search results client
+ */
+class YahooSearchResults extends SerpApiClient {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'yahoo');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiClientException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * Yandex search results client
+ */
+class YandexSearchResults extends SerpApiClient {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'yandex');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiClientException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * Ebay search results client
+ */
+class EbaySearchResults extends SerpApiClient {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'ebay');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiClientException("location is not currently supported by Bing");
+  }
+}
+/***
+ * Wrapper around SerpApi.com
  */
 class SerpApiClient {
   public $options;

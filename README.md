@@ -5,7 +5,6 @@
 
 This Php API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
-Feel free to fork this repository to add more backends.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 
@@ -15,7 +14,7 @@ The following services are provided:
  * [Search Archive API](https://serpapi.com/search-archive-api)
  * [Account API](https://serpapi.com/account-api)
 
-Serp API provides a [script builder](https://serpapi.com/demo) to get you started quickly.
+SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
 
 ## Installation
 
@@ -55,12 +54,12 @@ print_r($json_results)
 
 This example runs a search about "coffee" using your secret api key.
 
-The Serp API service (backend)
+The SerpApi service (backend)
  - searches on Google using the query: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
 The Php class GoogleSearchResults
- - Format the request to Serp API server
+ - Format the request to SerpApi server
  - Execute GET http request
  - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
 Et voila..
@@ -68,6 +67,9 @@ Et voila..
 Alternatively, you can search:
  - Bing using BingSearchResults class
  - Baidu using BaiduSearchResults class
+ - Ebay using EbaySearchResults class
+ - Yahoo using YahooSearchResults class
+ - Yandex using YandexSearchResults class
 
 See the playground to generate your code.
  https://serpapi.com/playground
@@ -79,11 +81,12 @@ See the playground to generate your code.
  * [Search Archive API](#search-archive-api)
  * [Account API](#account-api)
  * [Search Google Images](#search-google-images)
+ * [Generic SerpApiClient](#serpapiclient)
  * [Example by specification](#example-by-specification)
  * [Composer example](#composer-example)
 
 ### How to set SERP API key
-The Serp API key can be set globally using a singleton pattern.
+The SerpApi api_key can be set globally using a singleton pattern.
 
 ```php
 $client = new GoogleSearchResults();

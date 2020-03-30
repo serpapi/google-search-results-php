@@ -23,8 +23,9 @@ class GoogleSearchResultsTest extends TestCase {
     }
     $client = new GoogleSearchResults($this->API_KEY);
     $response = $client->get_json($this->QUERY);
-    $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
+    $this->assertEquals("Success", $response->search_metadata->status);
     $this->assertGreaterThan(5, count($response->organic_results));
+    $this->assertGreaterThan(5, strlen($response->organic_results[0]->title));
   }
 
 
@@ -69,6 +70,7 @@ class GoogleSearchResultsTest extends TestCase {
     }
     $client = new BingSearchResults($this->API_KEY);
     $response = $client->get_json($this->QUERY);
+    $this->assertEquals("Success", $response->search_metadata->status);
     $this->assertGreaterThan(5, count($response->organic_results));
   }
 
@@ -78,6 +80,59 @@ class GoogleSearchResultsTest extends TestCase {
     }
     $client = new BaiduSearchResults($this->API_KEY);
     $response = $client->get_json($this->QUERY);
+    $this->assertEquals("Success", $response->search_metadata->status);
+    $this->assertGreaterThan(5, count($response->organic_results));
+  }
+
+  public function test_yahoo_get_search_method() {
+    if(!isset($_ENV["API_KEY"])) {
+      return;
+    }
+    $query = [
+      'p' => "Coffee"
+    ];
+    $client = new YahooSearchResults($this->API_KEY);
+    $response = $client->get_json($query);
+    $this->assertEquals("Success", $response->search_metadata->status);
+    $this->assertGreaterThan(5, count($response->organic_results));
+  }
+
+  public function test_yandex_get_search_method() {
+    if(!isset($_ENV["API_KEY"])) {
+      return;
+    }
+    $query = [
+      'text' => "Coffee"
+    ];
+    $client = new YandexSearchResults($this->API_KEY);
+    $response = $client->get_json($query);
+    $this->assertEquals("Success", $response->search_metadata->status);
+    $this->assertGreaterThan(5, count($response->organic_results));
+  }
+
+  public function test_ebay_get_search_method() {
+    if(!isset($_ENV["API_KEY"])) {
+      return;
+    }
+    $query = [
+      '_nkw' => "Coffee"
+    ];
+    $client = new EbaySearchResults($this->API_KEY);
+    $response = $client->get_json($query);
+    $this->assertEquals("Success", $response->search_metadata->status);
+    $this->assertGreaterThan(5, count($response->organic_results));
+  }
+
+  public function test_searpapiclient_get_search_method() {
+    if(!isset($_ENV["API_KEY"])) {
+      return;
+    }
+    $query = [
+      'q' => "Coffee"
+    ];
+    $client = new SerpApiClient($this->API_KEY, 'google');
+    $response = $client->get_json($query);
+    $this->assertEquals("Success", $response->search_metadata->status);
     $this->assertGreaterThan(5, count($response->organic_results));
   }
 
@@ -88,7 +143,7 @@ class GoogleSearchResultsTest extends TestCase {
     }
     $client = new GoogleSearchResults($this->API_KEY);
     $response = $client->search("json", $this->QUERY);
-    $this->assertGreaterThan(5, strlen($response->local_results[0]->title));
+    $this->assertGreaterThan(5, count($response->organic_results));
   }
 }
 
