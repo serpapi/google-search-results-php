@@ -1,13 +1,16 @@
 {
     "name": "serpapi/google-search-results-php",
-    "version": "1.3.0",
-    "description": "Scrape Google, Bing, Baidu search result at scale using Serp API",
+    "description": "Scrape Google, Bing, Baidu, Ebay, Youtube, Walmart, Yandex search result at scale using SerpApi.com",
     "type": "library",
     "keywords": [
         "Google",
         "Serp",
         "Search",
         "Result",
+        "Google",
+        "Youtube",
+        "Walmart",
+        "Yandex",
         "Localisation",
         "REST",
         "api",
@@ -29,13 +32,13 @@
         "issues": "http://github.com/serpapi/google-search-results-php/issues"
     },
     "require": {
-        "php": ">=5.4.0",
+        "php": "^5.5 || ^7.0",
         "ext-curl": "*",
         "ext-json": "*"
     },
     "require-dev": {
-        "php": ">=5.5.7",
-        "phpunit/phpunit": "^7.0"
+        "php": "^5.5 || ^7.0",
+        "phpunit/phpunit": "^9.3"
     },
     "autoload": {
         "files": [
@@ -44,7 +47,7 @@
         ]
     },
     "scripts": {
-        "test": "phpunit test.php",
-        "example": "phpunit example_test.php"
+        "test": "phpunit test/GoogleSearchTest.php",
+        "example": "phpunit test/example_test.php"
     }
 }

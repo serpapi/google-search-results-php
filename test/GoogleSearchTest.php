@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 class GoogleSearchTest extends TestCase {
 
-  public function setUp() {
+  protected function setUp(): void {
      $this->QUERY = [
       'q' => "Coffee", 
       'location' => "Austin,Texas"
@@ -17,7 +17,7 @@ class GoogleSearchTest extends TestCase {
     }
   }
   
-  public function test_google_get_json_method() {
+  public function testGoogleSearch() {
     if(!isset($_ENV["API_KEY"])){
       return;
     }
