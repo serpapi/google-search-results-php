@@ -13,7 +13,7 @@ class ExampleTest extends TestCase {
   }
 
   public function test_google_image() {
-    $client = new GoogleSearchResults($this->API_KEY);
+    $client = new GoogleSearch($this->API_KEY);
     $data = $client->get_json([
       'q' => "Coffee", 
       'tbm' => 'isch'

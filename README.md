@@ -1,7 +1,7 @@
 
 # Google Search Results in PHP
 
-[![Build Status](https://travis-ci.org/serpapi/google-search-results-php.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-php)
+[![PHP test](https://github.com/serpapi/google-search-results-php/workflows/PHP%20test/badge.svg)](https://github.com/serpapi/google-search-results-php/actions)
 
 This Php API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
@@ -46,7 +46,7 @@ Get "your secret key" from https://serpapi.com/dashboard
 
 Then you can start coding something like:
 ```php
-$client = new GoogleSearchResults("your secret key");
+$client = new GoogleSearch("your secret key");
 $query = ["q" => "coffee","location"=>"Austin,Texas"];
 $response = $client->get_json($query);
 print_r($json_results)
@@ -58,18 +58,20 @@ The SerpApi service (backend)
  - searches on Google using the query: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
-The Php class GoogleSearchResults
+The Php class GoogleSearch
  - Format the request to SerpApi server
  - Execute GET http request
  - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
 Et voila..
 
 Alternatively, you can search:
- - Bing using BingSearchResults class
- - Baidu using BaiduSearchResults class
- - Ebay using EbaySearchResults class
- - Yahoo using YahooSearchResults class
- - Yandex using YandexSearchResults class
+ - Bing using BingSearch class
+ - Baidu using BaiduSearch class
+ - Ebay using EbaySearch class
+ - Yahoo using YahooSearch class
+ - Yandex using YandexSearch class
+ - Walmart using WalmartSearch class
+ - Youtube using YoutubeSearch class
 
 See the playground to generate your code.
  https://serpapi.com/playground
@@ -89,13 +91,13 @@ See the playground to generate your code.
 The SerpApi api_key can be set globally using a singleton pattern.
 
 ```php
-$client = new GoogleSearchResults();
+$client = new GoogleSearch();
 $client->set_serp_api_key("Your Private Key");
 ```
 Or
 
 ```php
-$client = new GoogleSearchResults("Your Private Key");
+$client = new GoogleSearch("Your Private Key");
 ```
 
 ### Search API capability
@@ -116,7 +118,7 @@ $query = [
   "async" => true|false # allow async 
 ];
 
-$client = new GoogleSearchResults("private key");
+$client = new GoogleSearch("private key");
 
 $html_results = $client->get_html($query);
 $json_results = $client->get_json($query);
@@ -125,7 +127,7 @@ $json_results = $client->get_json($query);
 ### Location API
 
 ```php
-$client = new GoogleSearchResults($this->API_KEY);
+$client = new GoogleSearch($this->API_KEY);
 $location_list = $client->get_location('Austin', 3);
 print_r($location_list);
 ```
@@ -148,7 +150,7 @@ it prints the first 3 location matching Austin (Texas, Texas, Rochester)
 
 Let's run a search to get a search_id.
 ```php
-$client = new GoogleSearchResults($this->API_KEY);
+$client = new GoogleSearch($this->API_KEY);
 $result = $client->get_json($this->QUERY);
 $search_id = $result->search_metadata->id
 ```
@@ -164,7 +166,7 @@ it prints the search from the archive.
 
 ### Account API
 ```ruby
-$client = new GoogleSearchResults($this->API_KEY);
+$client = new GoogleSearch($this->API_KEY);
 $info = $client->get_account();
 print_r($info);
 ```
@@ -173,7 +175,7 @@ it prints your account information.
 ### Search Google Images
 
 ```php
-$client = new GoogleSearchResults($this->API_KEY);
+$client = new GoogleSearch($this->API_KEY);
 $data = $client->get_json([
   'q' => "Coffee", 
   'tbm' => 'isch'
@@ -208,16 +210,25 @@ To run the code.
  - cd google-search-results-php/example_composer/
  - make API_KEY=<yourSecretKey> all
 
+
+## Change log
+ * 2.0
+   * Code refractoring SearchResult -> Search
+   * Add walmart and youtube search engine
+ * 1.2.0
+   * Add more search engine
+ * 1.0
+   * First stable version
 ## Conclusion
 
-This service supports Google Images, News, Shopping.
-To enable a type of search, the field tbm (to be matched) must be set to:
+SerpApi supports all the major search engines. Google has the more advance support with all the major services available: Images, News, Shopping and more.. To enable a type of search, the field tbm (to be matched) must be set to:
 
- * isch: Google Images API.
- * nws: Google News API.
- * shop: Google Shopping API.
- * any other Google service should work out of the box.
- * (no tbm parameter): regular Google Search.
+ - isch: Google Images API.
+ - nws: Google News API.
+ - shop: Google Shopping API.
+ - any other Google service should work out of the box.
+ - (no tbm parameter): regular Google search.
+The field tbs allows to customize the search even more.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 

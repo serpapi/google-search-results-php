@@ -1,30 +1,30 @@
 <?php 
 
 // Exception
-class SerpApiClientException extends Exception {}
+class SerpApiSearchException extends Exception {}
 
 /***
- * Google search results client
+ * Google search
  */
-class GoogleSearchResults extends SerpApiClient {
+class GoogleSearch extends SerpApiSearch {
   public function __construct($api_key) {
     parent::__construct($api_key, 'google');
   }
 }
 
 /***
- * Bing search results client
+ * Bing search
  */
-class BingSearchResults extends SerpApiClient {
+class BingSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
     parent::__construct($api_key, 'bing');
   }
 }
 
 /***
- * Baidu search results client
+ * Baidu search
  */
-class BaiduSearchResults extends SerpApiClient {
+class BaiduSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
     parent::__construct($api_key, 'baidu');
   }
@@ -33,14 +33,14 @@ class BaiduSearchResults extends SerpApiClient {
    * Method is not supported.
    */
   public function get_location($q, $limit) {
-    throw new SerpApiClientException("location is not currently supported by Bing");
+    throw new SerpApiSearchException("location is not currently supported by Bing");
   }
 }
 
 /***
- * Yahoo search results client
+ * Yahoo search
  */
-class YahooSearchResults extends SerpApiClient {
+class YahooSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
     parent::__construct($api_key, 'yahoo');
   }
@@ -49,14 +49,14 @@ class YahooSearchResults extends SerpApiClient {
    * Method is not supported.
    */
   public function get_location($q, $limit) {
-    throw new SerpApiClientException("location is not currently supported by Bing");
+    throw new SerpApiSearchException("location is not currently supported by Bing");
   }
 }
 
 /***
- * Yandex search results client
+ * Yandex search
  */
-class YandexSearchResults extends SerpApiClient {
+class YandexSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
     parent::__construct($api_key, 'yandex');
   }
@@ -65,14 +65,14 @@ class YandexSearchResults extends SerpApiClient {
    * Method is not supported.
    */
   public function get_location($q, $limit) {
-    throw new SerpApiClientException("location is not currently supported by Bing");
+    throw new SerpApiSearchException("location is not currently supported by Bing");
   }
 }
 
 /***
- * Ebay search results client
+ * Ebay search
  */
-class EbaySearchResults extends SerpApiClient {
+class EbaySearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
     parent::__construct($api_key, 'ebay');
   }
@@ -81,13 +81,46 @@ class EbaySearchResults extends SerpApiClient {
    * Method is not supported.
    */
   public function get_location($q, $limit) {
-    throw new SerpApiClientException("location is not currently supported by Bing");
+    throw new SerpApiSearchException("location is not currently supported by Bing");
   }
 }
+
 /***
- * Wrapper around SerpApi.com
+ * YouTube search
  */
-class SerpApiClient {
+class YouTubeSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'youTube');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * WalmartSearch search
+ */
+class WalmartSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'walmart');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * Wrapper around serpapi.com
+ */
+class SerpApiSearch {
   public $options;
   public $api;
   public $api_key;
@@ -98,7 +131,7 @@ class SerpApiClient {
     if($engine) {
       $this->engine = $engine;
     } else {
-      throw new SerpApiClientException("engine must be defined");
+      throw new SerpApiSearchException("engine must be defined");
     }
 
     // register private api key
@@ -109,7 +142,7 @@ class SerpApiClient {
   
   public function set_serp_api_key($api_key) {
     if($api_key == NULL)
-      throw new SerpApiClientException("serp_api_key must have a value");
+      throw new SerpApiSearchException("serp_api_key must have a value");
     $this->api_key = $api_key;
   }
     /***
@@ -164,7 +197,7 @@ class SerpApiClient {
     $decode_format = $output == 'json' ? 'json' : 'php';
 
     if($this->api_key == NULL) {
-      throw new SerpApiClientException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
+      throw new SerpApiSearchException("serp_api_key must be defined either in the constructor or by the method set_serp_api_key");
     }
     
     $api = new RestClient([
@@ -196,10 +229,10 @@ class SerpApiClient {
     {
       $error = $result->decode_response();
       $msg = $error->error;
-      throw new SerpApiClientException($msg);
+      throw new SerpApiSearchException($msg);
     }
     
-    throw new SerpApiClientException("Unexpected exception: $result->response");
+    throw new SerpApiSearchException("Unexpected exception: $result->response");
   }
   
 }
