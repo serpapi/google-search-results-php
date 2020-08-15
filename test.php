@@ -122,18 +122,18 @@ class GoogleSearchTest extends TestCase {
     $this->assertGreaterThan(5, count($response->organic_results));
   }
 
-  public function test_walmart_get_search_method() {
-    if(!isset($_ENV["API_KEY"])) {
-      return;
-    }
-    $query = [
-      'query' => "Coffee"
-    ];
-    $client = new WalmartSearch($this->API_KEY);
-    $response = $client->get_json($query);
-    $this->assertEquals("Success", $response->search_metadata->status);
-    $this->assertGreaterThan(5, count($response->organic_results));
-  }
+  // public function test_walmart_get_search_method() {
+  //   if(!isset($_ENV["API_KEY"])) {
+  //     return;
+  //   }
+  //   $query = [
+  //     'query' => "Coffee"
+  //   ];
+  //   $client = new WalmartSearch($this->API_KEY);
+  //   $response = $client->get_json($query);
+  //   $this->assertEquals("Success", $response->search_metadata->status);
+  //   $this->assertGreaterThan(5, count($response->organic_results));
+  // }
 
   public function test_youtube_get_search_method() {
     if(!isset($_ENV["API_KEY"])) {
@@ -145,9 +145,8 @@ class GoogleSearchTest extends TestCase {
     $client = new YoutubeSearch($this->API_KEY);
     $response = $client->get_json($query);
     $this->assertEquals("Success", $response->search_metadata->status);
-    $this->assertGreaterThan(5, count($response->organic_results));
+    $this->assertGreaterThan(5, count($response->video_results));
   }
-
 
   public function test_searpapiclient_get_search_method() {
     if(!isset($_ENV["API_KEY"])) {
@@ -156,7 +155,7 @@ class GoogleSearchTest extends TestCase {
     $query = [
       'q' => "Coffee"
     ];
-    $client = new SerpApiClient($this->API_KEY, 'google');
+    $client = new SerpApiSearch($this->API_KEY, 'google');
     $response = $client->get_json($query);
     $this->assertEquals("Success", $response->search_metadata->status);
     $this->assertGreaterThan(5, count($response->organic_results));
