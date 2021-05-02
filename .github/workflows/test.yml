@@ -14,10 +14,6 @@ jobs:
         operating-system: ['ubuntu-latest']
         php-versions: ['7.4', '8.1']
         phpunit-versions: ['latest']
-        include:
-        - operating-system: 'ubuntu-latest'
-          php-versions: '7.4'
-          phpunit-versions: '8.5.13'    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
