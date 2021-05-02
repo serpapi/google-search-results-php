@@ -1,7 +1,7 @@
 
 # Google Search Results in PHP
 
-[![PHP test](https://github.com/serpapi/google-search-results-php/workflows/PHP%20test/badge.svg)](https://github.com/serpapi/google-search-results-php/actions)
+[![PHP build](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml/badge.svg)](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml)
 
 This Php API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
