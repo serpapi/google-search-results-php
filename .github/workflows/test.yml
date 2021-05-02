@@ -11,12 +11,12 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-        php-versions: ['5.6', '7.4', '8.1']
+        operating-system: ['ubuntu-latest']
+        php-versions: ['7.4', '8.1']
         phpunit-versions: ['latest']
         include:
         - operating-system: 'ubuntu-latest'
-          php-versions: '7.2'
+          php-versions: '7.4'
           phpunit-versions: '8.5.13'    
     steps:
     - name: Checkout
