@@ -32,7 +32,7 @@
         "issues": "http://github.com/serpapi/google-search-results-php/issues"
     },
     "require": {
-        "php": "^5.5 || ^7.0",
+        "php": "^5.5 || ^7.0 || ^8.0",
         "ext-curl": "*",
         "ext-json": "*"
     },
