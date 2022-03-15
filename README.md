@@ -3,7 +3,7 @@
 
 [![PHP build](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml/badge.svg)](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml)
 
-This Php API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
+This PHP API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
 
 [The full documentation is available here.](https://serpapi.com/search-api)
@@ -49,7 +49,7 @@ Then you can start coding something like:
 $client = new GoogleSearch("your secret key");
 $query = ["q" => "coffee","location"=>"Austin,Texas"];
 $response = $client->get_json($query);
-print_r($json_results)
+print_r($response)
  ```
 
 This example runs a search about "coffee" using your secret api key.
@@ -127,7 +127,7 @@ $json_results = $client->get_json($query);
 ### Location API
 
 ```php
-$client = new GoogleSearch($this->API_KEY);
+$client = new GoogleSearch(getenv("API_KEY"));
 $location_list = $client->get_location('Austin', 3);
 print_r($location_list);
 ```
@@ -150,7 +150,7 @@ it prints the first 3 location matching Austin (Texas, Texas, Rochester)
 
 Let's run a search to get a search_id.
 ```php
-$client = new GoogleSearch($this->API_KEY);
+$client = new GoogleSearch(getenv("API_KEY"));
 $result = $client->get_json($this->QUERY);
 $search_id = $result->search_metadata->id
 ```
@@ -175,7 +175,7 @@ it prints your account information.
 ### Search Google Images
 
 ```php
-$client = new GoogleSearch($this->API_KEY);
+$client = new GoogleSearch(getenv("API_KEY"));
 $data = $client->get_json([
   'q' => "Coffee", 
   'tbm' => 'isch'
