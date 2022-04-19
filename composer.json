@@ -1,6 +1,6 @@
 {
     "name": "serpapi/google-search-results-php",
-    "description": "Scrape Google, Bing, Baidu, Ebay, Youtube, Walmart, Yandex search result at scale using SerpApi.com",
+    "description": "Get Google, Bing, Baidu, Ebay, Yahoo, Yandex, Home depot, Naver, Apple, Duckduckgo, Youtube search results via SerpApi.com",
     "type": "library",
     "keywords": [
         "Google",
@@ -17,7 +17,17 @@
         "client",
         "curl",
         "JSON",
-        "XML"
+        "XML",
+        "naver",
+        "duckduckgo",
+        "apple",
+        "store",
+        "naver",
+        "homedepot",
+        "datamining",
+        "ml",
+        "learning",
+        "scrape"
     ],
     "homepage": "http://github.com/serpapi/google-search-results-php",
     "license": "MIT",

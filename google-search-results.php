@@ -4,7 +4,8 @@
 class SerpApiSearchException extends Exception {}
 
 /***
- * Google search
+ * GoogleSearch engine
+ * @see https://serpapi.com/search-api
  */
 class GoogleSearch extends SerpApiSearch {
   public function __construct($api_key) {
@@ -13,7 +14,8 @@ class GoogleSearch extends SerpApiSearch {
 }
 
 /***
- * Bing search
+ * BingSearch engine
+ * @see https://serpapi.com/bing-search-api
  */
 class BingSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -22,7 +24,25 @@ class BingSearch extends SerpApiSearch {
 }
 
 /***
- * Baidu search
+ * BaiduSearch engine
+ * @see https://serpapi.com/baidu-search-api
+ */
+class BaiduSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'baidu');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * DuckDuckGoSearch engine
+ * @see https://serpapi.com/duckduckgo-search-api
  */
 class BaiduSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -39,6 +59,7 @@ class BaiduSearch extends SerpApiSearch {
 
 /***
  * Yahoo search
+ * @see https://serpapi.com/yahoo-search-api
  */
 class YahooSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -55,6 +76,7 @@ class YahooSearch extends SerpApiSearch {
 
 /***
  * Yandex search
+ * @see https://serpapi.com/yandex-search-api
  */
 class YandexSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -71,6 +93,7 @@ class YandexSearch extends SerpApiSearch {
 
 /***
  * Ebay search
+ * @see https://serpapi.com/ebay-search-api
  */
 class EbaySearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -87,6 +110,7 @@ class EbaySearch extends SerpApiSearch {
 
 /***
  * YouTube search
+ * @see https://serpapi.com/youtube-search-api
  */
 class YouTubeSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -103,6 +127,7 @@ class YouTubeSearch extends SerpApiSearch {
 
 /***
  * WalmartSearch search
+ * @see https://serpapi.com/walmart-search-api
  */
 class WalmartSearch extends SerpApiSearch {
   public function __construct($api_key=NULL) {
@@ -116,6 +141,59 @@ class WalmartSearch extends SerpApiSearch {
     throw new SerpApiSearchException("location is not currently supported by Bing");
   }
 }
+
+/***
+ * HomeDepotSearch engine
+ * @see https://serpapi.com/home-depot-search-api
+ */
+class HomeDepotSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'walmart');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
+
+ /***
+ * AppleStoreAppSearch engine
+ * @see https://serpapi.com/apple-app-store
+ */
+class AppleStoreAppSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'apple_app_store');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
+/***
+ * NaverSearch engine 
+ * @see https://serpapi.com/naver-search-api
+ */
+class NaverSearch extends SerpApiSearch {
+  public function __construct($api_key=NULL) {
+    parent::__construct($api_key, 'naver');
+  }
+
+  /***
+   * Method is not supported.
+   */
+  public function get_location($q, $limit) {
+    throw new SerpApiSearchException("location is not currently supported by Bing");
+  }
+}
+
 
 /***
  * Wrapper around serpapi.com
