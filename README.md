@@ -65,13 +65,16 @@ The Php class GoogleSearch
 Et voila..
 
 Alternatively, you can search:
- - Bing using BingSearch class
- - Baidu using BaiduSearch class
- - Ebay using EbaySearch class
- - Yahoo using YahooSearch class
- - Yandex using YandexSearch class
- - Walmart using WalmartSearch class
- - Youtube using YoutubeSearch class
+  - Bing using BingSearch class
+  - Baidu using BaiduSearch class
+  - Ebay using EbaySearch class
+  - Yahoo using YahooSearch class
+  - Yandex using YandexSearch class
+  - Walmart using WalmartSearch class
+  - Youtube using YoutubeSearch class
+  - HomeDepot using HomeDepotSearch class
+  - Apple App Store using AppleAppStoreSearch class
+  - Naver using NaverSearch class
 
 See the playground to generate your code.
  https://serpapi.com/playground
