@@ -1,10 +1,17 @@
+<h1 align="center">Google Search Results in PHP</h1>
 
-# Google Search Results in PHP
+<div align="center">
+   <img src="https://user-images.githubusercontent.com/78694043/233927317-a9b572bc-3b0f-4c20-993f-10a7df403bbe.svg" width="600" alt="google-search-results-php-logo">
+</div>
 
-[![PHP build](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml/badge.svg)](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml)
+<div align="center">
+
+  <a href="https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml">![PHP build](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml/badge.svg)</a>
+  <a href="">![Packagist Downloads](https://img.shields.io/packagist/dm/serpapi/google-search-results-php)</a>
+
+</div>
 
 This PHP API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
-
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 
