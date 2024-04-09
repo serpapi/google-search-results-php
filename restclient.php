@@ -12,6 +12,7 @@ class RestClient implements Iterator, ArrayAccess {
     
     public $options;
     public $handle; // cURL resource handle.
+    public $url;
     
     // Populated after execution:
     public $response; // Response body.
@@ -148,7 +149,7 @@ class RestClient implements Iterator, ArrayAccess {
             $headers = array_merge($client->options['headers'], $headers);
             foreach($headers as $key => $values){
                 foreach(is_array($values)? $values : [$values] as $value){
-                    $curlopt[CURLOPT_HTTPHEADER][] = sprintf("%s:%s", $key, $value);
+                    $curlopt[CURLOPT_HTTPHEADER][] = sprintf("%s: %s", $key, $value);
                 }
             }
         }
@@ -187,9 +188,9 @@ class RestClient implements Iterator, ArrayAccess {
         }
         
         if($client->options['base_url']){
-            if($client->url[0] !== '/' && substr($client->options['base_url'], -1) !== '/')
-                $client->url = '/' . $client->url;
-            $client->url = $client->options['base_url'] . $client->url;
+            $client->url = sprintf("%s/%s",
+                rtrim((string) $client->options['base_url'], '/'), 
+                ltrim((string) $client->url, '/'));
         }
         $curlopt[CURLOPT_URL] = $client->url;
         
@@ -201,7 +202,9 @@ class RestClient implements Iterator, ArrayAccess {
         }
         curl_setopt_array($client->handle, $curlopt);
         
-        $client->parse_response(curl_exec($client->handle));
+        $response = curl_exec($client->handle);
+        if($response !== FALSE)
+            $client->parse_response($response);
         $client->info = (object) curl_getinfo($client->handle);
         $client->error = curl_error($client->handle);
         
