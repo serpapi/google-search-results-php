@@ -111,7 +111,6 @@ $query = [
   "hl" =>  "Google UI Language",
   "gl" =>  "Google Country",
   "safe" =>  "Safe Search Flag",
-  "num" =>  "Number of Results",
   "start" =>  "Pagination Offset",
   "serp_api_key" =>  "Your SERP API Key",
   "tbm" => "nws|isch|shop"
