@@ -47,7 +47,7 @@ Then you can start coding something like:
 $client = new GoogleSearch("your secret key");
 $query = ["q" => "coffee","location"=>"Austin,Texas"];
 $response = $client->get_json($query);
-print_r($response)
+print_r($response);
  ```
 
 This example runs a search about "coffee" using your secret api key.
