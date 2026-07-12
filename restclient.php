@@ -165,7 +165,7 @@ class RestClient implements Iterator, ArrayAccess {
             $parameters_string = http_build_query($parameters);
             
             // http_build_query automatically adds an array index to repeated
-            // parameters which is not desirable on most systems. This hack
+            // parameters that are not desirable on most systems. This hack
             // reverts "key[0]=foo&key[1]=bar" to "key[]=foo&key[]=bar"
             if(!$client->options['build_indexed_queries'])
                 $parameters_string = preg_replace(
