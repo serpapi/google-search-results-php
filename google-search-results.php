@@ -241,7 +241,7 @@ class SerpApiSearch {
   }
 
  /***
-  * Get account information using Account API
+  * Get account information using the Account API
   */
   function get_account() {
     return $this->query('/account', 'json', []);
