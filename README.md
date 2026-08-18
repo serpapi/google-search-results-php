@@ -2,6 +2,9 @@
 
 [![PHP build](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml/badge.svg)](https://github.com/serpapi/google-search-results-php/actions/workflows/test.yml)
 
+> ## ⚠️ Deprecation Notice
+> This repository has been deprecated in favor of [serpapi-php](https://github.com/serpapi/serpapi-php).
+
 This PHP API is meant to scrape and parse Google, Bing or Baidu results using [SerpApi](https://serpapi.com).
 
 [The full documentation is available here.](https://serpapi.com/search-api)
